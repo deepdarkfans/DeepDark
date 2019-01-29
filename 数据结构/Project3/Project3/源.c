@@ -9,7 +9,7 @@ typedef struct bitnode {
 	struct bitnode *lchild, *rchild;
 }*bitree,bitnode;
 bitree T;
-void createbitree(bitree *bt)//先序序列构造二叉树
+bitnode createbitree(bitree *bt)//先序序列构造二叉树
 {
 	char ch;
 	scanf("%c", &ch);
@@ -22,4 +22,18 @@ void createbitree(bitree *bt)//先序序列构造二叉树
 		createbitree(&((*bt)->lchild));//递归
 		createbitree(&((*bt)->rchild));
 	}
+}
+void visit(char ch)
+{
+	printf("%c",ch) //访问根节点
+}
+void preorder(bitree root)//先序遍历,root是指向二叉树根节点的指针
+{
+	if (root != NULL)
+	{
+		visit(root->data);//访问根节点
+		preorder(root->lchild);
+		preorder(root->rchild);
+	}
+	//此为递归先序遍历,非递归后期学.此外中序及后序分别是在中间和最后访问根节点,不做展示
 }
